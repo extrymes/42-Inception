@@ -2,9 +2,9 @@ FROM debian:buster
 
 RUN apt update -y &&\
 	apt upgrade -y &&\
-	apt install nginx -y &&\
-	apt install vim -y &&\
-	apt install curl -y
+	apt install -y nginx &&\
+	apt install -y vim &&\
+	apt install -y curl
 
 RUN mkdir -p /etc/nginx/ssl &&\
 	apt install openssl -y &&\
@@ -16,5 +16,7 @@ RUN chmod 755 /var/www/html &&\
 	chown -R www-data:www-data /var/www/html
 
 COPY conf/nginx.conf /etc/nginx/nginx.conf
+
+EXPOSE 443
 
 CMD ["nginx", "-g", "daemon off;"]
