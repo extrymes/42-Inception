@@ -22,6 +22,9 @@ RUN chmod 755 /var/www/html && \
 # Copy configuration files
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 
+# Copy static page
+COPY static/index.html /usr/share/nginx/html/index.html
+
 # Expose HTTPS port
 EXPOSE 443
 

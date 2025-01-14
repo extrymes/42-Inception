@@ -24,6 +24,7 @@ services:
       - inception
     ports:
       - "443:443"
+      - "4242:4242"
     depends_on:
       - wordpress
     restart: on-failure
