@@ -1,13 +1,12 @@
 COMPOSE = docker compose
 COMPOSE_PATH = ./srcs/docker-compose.yml
-DATA = /home/sabras/data
 MARIADB_VOLUME = /home/sabras/data/mariadb
 WORDPRESS_VOLUME = /home/sabras/data/wordpress
 
 all: up
 
 up:
-	@mkdir -p $(DATA) $(MARIADB_VOLUME) $(WORDPRESS_VOLUME)
+	@mkdir -p $(MARIADB_VOLUME) $(WORDPRESS_VOLUME)
 	@sudo chmod 755 $(MARIADB_VOLUME) $(WORDPRESS_VOLUME)
 	@$(COMPOSE) -f $(COMPOSE_PATH) up --build
 
