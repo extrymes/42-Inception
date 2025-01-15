@@ -1,13 +1,13 @@
 FROM debian:bullseye
 
 # Install dependencies
-RUN apt update -y && \
-	apt upgrade -y && \
-	apt install -y vim && \
-	apt install -y curl && \
-	apt install -y wget && \
-	apt install -y php7.4 php-fpm php-mysql && \
-	apt install -y mariadb-client
+RUN apt-get update -y && \
+	apt-get upgrade -y && \
+	apt-get install -y vim && \
+	apt-get install -y curl && \
+	apt-get install -y wget && \
+	apt-get install -y php7.4 php-fpm php-mysql && \
+	apt-get install -y mariadb-client
 
 # Download and extract WordPress
 RUN wget https://wordpress.org/wordpress-6.7.tar.gz -P /var/www && \

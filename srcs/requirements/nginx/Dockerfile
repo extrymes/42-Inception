@@ -1,15 +1,15 @@
 FROM debian:bullseye
 
 # Install dependencies
-RUN apt update -y && \
-	apt upgrade -y && \
-	apt install -y vim && \
-	apt install -y curl && \
-	apt install -y nginx
+RUN apt-get update -y && \
+	apt-get upgrade -y && \
+	apt-get install -y vim && \
+	apt-get install -y curl && \
+	apt-get install -y nginx
 
 # Install SSL
 RUN mkdir -p /etc/nginx/ssl && \
-	apt install openssl -y && \
+	apt-get install openssl -y && \
 	openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj "/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=login.42.fr/UID=login"
 
 # Create directory for Nginx runtime

@@ -1,11 +1,11 @@
 FROM debian:bullseye
 
 # Install dependencies
-RUN apt update -y && \
-	apt upgrade -y && \
-	apt install -y vim && \
-	apt install -y curl && \
-	apt install -y mariadb-server
+RUN apt-get update -y && \
+	apt-get upgrade -y && \
+	apt-get install -y vim && \
+	apt-get install -y curl && \
+	apt-get install -y mariadb-server
 
 # Copy configuration files
 COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
