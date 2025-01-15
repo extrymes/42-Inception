@@ -1,4 +1,5 @@
 services:
+  # Mandatory part
   mariadb:
     container_name: mariadb
     env_file: .env
@@ -42,6 +43,19 @@ services:
       - "9000"
     depends_on:
       - mariadb
+    restart: on-failure
+  # Bonus part
+  adminer:
+    container_name: adminer
+    build:
+      context: requirements/bonus/adminer
+      dockerfile: Dockerfile
+    volumes:
+      - wordpress:/var/www/wordpress
+    networks:
+      - inception
+    depends_on:
+      - wordpress
     restart: on-failure
 volumes:
   wordpress:
