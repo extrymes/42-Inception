@@ -57,6 +57,19 @@ services:
     depends_on:
       - wordpress
     restart: on-failure
+  portainer:
+    container_name: portainer
+    build:
+      context: requirements/bonus/portainer
+      dockerfile: Dockerfile
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - inception
+    ports:
+      - "9443:9443"
+    privileged: true
+    restart: on-failure
 volumes:
   wordpress:
     driver: local
