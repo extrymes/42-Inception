@@ -3,8 +3,6 @@ FROM debian:bullseye
 # Install dependencies
 RUN apt-get update -y && \
 	apt-get upgrade -y && \
-	apt-get install -y vim && \
-	apt-get install -y curl && \
 	apt-get install -y nginx
 
 # Install SSL
@@ -25,8 +23,5 @@ COPY conf/nginx.conf /etc/nginx/nginx.conf
 # Copy static page
 COPY static/index.html /usr/share/nginx/html/index.html
 
-# Expose HTTPS port
-EXPOSE 443
-
-# Start Nginx in the foreground
+# Run Nginx on startup
 CMD ["nginx", "-g", "daemon off;"]
