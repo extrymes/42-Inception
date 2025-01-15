@@ -2,7 +2,7 @@ services:
   # Mandatory part
   mariadb:
     container_name: mariadb
-    env_file: .env
+    env_file: ../secrets/.env
     build:
       context: requirements/mariadb
       dockerfile: Dockerfile
@@ -15,7 +15,6 @@ services:
     restart: unless-stopped
   nginx:
     container_name: nginx
-    env_file: .env
     build:
       context: requirements/nginx
       dockerfile: Dockerfile
@@ -31,7 +30,7 @@ services:
     restart: on-failure
   wordpress:
     container_name: wordpress
-    env_file: .env
+    env_file: ../secrets/.env
     build:
       context: requirements/wordpress
       dockerfile: Dockerfile
@@ -64,6 +63,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
     networks:
       - inception
     ports:
@@ -83,6 +83,7 @@ volumes:
       type: 'none'
       o: 'bind'
       device: '${HOME}/data/mariadb'
+  portainer_data:
 networks:
   inception:
     driver: bridge
