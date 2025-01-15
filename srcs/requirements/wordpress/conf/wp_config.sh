@@ -8,7 +8,7 @@ if [ ! -f "wp-config.php" ]; then
 	wp config create --allow-root \
 		--dbname=$DB_NAME \
 		--dbuser=$DB_USER \
-		--dbpass=$DB_PASS \
+		--dbpass=$DB_USER_PASS \
 		--dbhost=$DB_HOST
 fi
 
@@ -17,17 +17,17 @@ if ! grep -q "require_once ABSPATH . 'wp-settings.php';" wp-config.php; then
 fi
 
 wp core install --allow-root \
-	--url=$DOMAIN_NAME \
-	--title=$TITLE \
-	--admin_user=$ADMIN_USER \
-	--admin_password=$ADMIN_PASSWORD \
-	--admin_email=$ADMIN_EMAIL \
+	--url=$WP_DOMAIN_NAME \
+	--title=$WP_TITLE \
+	--admin_user=$WP_ADMIN_USER \
+	--admin_password=$WP_ADMIN_PASS \
+	--admin_email=$WP_ADMIN_EMAIL \
 	--skip-email
 
-if ! wp user get $USER --allow-root > /dev/null 2>&1; then
-	wp user create $USER $USER_EMAIL --allow-root \
+if ! wp user get $WP_EDITOR_USER --allow-root > /dev/null 2>&1; then
+	wp user create $WP_EDITOR_USER $WP_EDITOR_EMAIL --allow-root \
 		--role=editor \
-		--user_pass=$USER_PASS > /dev/null 2>&1
+		--user_pass=$WP_EDITOR_PASS > /dev/null 2>&1
 fi
 
 if [ ! -d "/run/php" ]; then
