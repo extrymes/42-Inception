@@ -1,7 +1,7 @@
 COMPOSE = docker compose
-COMPOSE_PATH = ./srcs/docker-compose.yml
-MARIADB_VOLUME = /home/sabras/data/mariadb
-WORDPRESS_VOLUME = /home/sabras/data/wordpress
+COMPOSE_PATH = srcs/docker-compose.yml
+MARIADB_VOLUME = $(HOME)/data/mariadb
+WORDPRESS_VOLUME = $(HOME)/data/wordpress
 
 all: up
 
