@@ -3,8 +3,6 @@ FROM debian:bullseye
 # Install dependencies
 RUN apt-get update -y && \
 	apt-get upgrade -y && \
-	apt-get install -y vim && \
-	apt-get install -y curl && \
 	apt-get install -y wget
 
 # Copy tool files
