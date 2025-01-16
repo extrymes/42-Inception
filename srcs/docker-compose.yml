@@ -12,7 +12,7 @@ services:
       - inception
     expose:
       - "3306"
-    restart: unless-stopped
+    restart: on-failure
   nginx:
     container_name: nginx
     build:
