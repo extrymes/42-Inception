@@ -23,5 +23,5 @@ COPY conf/nginx.conf /etc/nginx/nginx.conf
 # Copy static page
 COPY static/index.html /usr/share/nginx/html/index.html
 
-# Run Nginx on startup
+# Run Nginx in the foreground
 CMD ["nginx", "-g", "daemon off;"]
