@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mysqld_safe --datadir=/var/lib/mysql &
+service mariadb start
 
 sleep 5
 
