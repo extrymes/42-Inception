@@ -17,7 +17,15 @@ cd 42-Inception
 ```bash
 touch srcs/.env
 ```
-3. Build and start all services
+3. Open `/etc/hosts` file and replace `localhost` by your domain name
+```bash
+sudo vim /etc/hosts
+```
+```diff
+- 127.0.0.1 localhost
++ 127.0.0.1 sabras.42.fr
+```
+4. Build and start all services
 ```bash
 make
 ```
